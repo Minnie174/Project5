@@ -1,0 +1,22 @@
+.mainPage {
+  padding-top: 50px;
+  padding-bottom: 50px;
+
+}
+
+.mainPageContainer {
+  display: grid;
+  grid-template-columns: 1fr 270px;
+  gap: 0 30px;
+}
+
+.mainPageBlock {
+  display: grid;
+  row-gap: 50px;
+}
+
+.mainPageBlockItem {
+  a {
+    margin-top: 20px;
+  }
+}

@@ -1,0 +1,27 @@
+.ant-modal {
+  width: 670px !important;
+  height: calc(100vh - 90px);
+  top: 45px;
+  bottom: 45px;
+  animation-duration: 0s !important;
+}
+
+.ant-modal-content {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.ant-modal-body {
+  padding: 0;
+}
+
+.ant-modal-close {
+  top: -40px;
+
+  .ant-modal-close-x {
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    line-height: unset;
+  }
+}

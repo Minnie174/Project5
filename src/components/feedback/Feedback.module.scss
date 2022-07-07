@@ -1,0 +1,80 @@
+.feedback {
+  margin: 0;
+  padding: 25px 0 0;
+
+  li {
+    list-style-type: none;
+    border-bottom: 1px solid rgb(216, 216, 216);
+    padding-bottom: 19px;
+    margin-bottom: 25px;
+    position: relative;
+  }
+
+  &+ a {
+    text-decoration: underline;
+    font-size: 16px;
+    line-height: 25px;
+    color: rgb(0, 0, 0);
+  }
+
+  .feedbackHeader {
+    display: flex;
+    color: rgb(155, 155, 155);
+    font-size: 13px;
+    line-height: 20px;
+    
+    div:first-of-type {
+      margin-right: 15px;
+    }
+
+    a {
+      display: block;
+      font-size: 16px;
+      line-height: 20px;
+      margin: 1px 0;
+      text-decoration: none;
+      color: #000;
+      font-weight: 500;
+    }
+  }
+
+  .stars {
+    display: flex;
+    margin-top: 14px;
+    margin-bottom: 6px;
+
+    .star {
+      opacity: 0.2;
+      margin-right: 5px;
+
+      &::before {
+        content: '';
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url('../../assets/icons/star.svg') no-repeat 4px 1.5px;
+      }
+    }
+
+    .activeStar {
+      @extend .star;
+      opacity: 1;
+    }
+  }
+
+  p {
+    margin: 15px 0 14px;
+    font-size: 16px;
+    line-height: 25px;
+  }
+
+  .feedbackFooter {
+    color: rgb(155, 155, 155);
+    font-size: 14px;
+
+    a {
+      text-decoration: underline;
+      color: rgb(155, 155, 155);;
+    }
+  }
+}

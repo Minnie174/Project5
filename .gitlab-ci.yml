@@ -1,0 +1,95 @@
+image: "node:12.22.0"
+
+stages:
+  - build
+  - deploy
+
+.builds:
+  stage: build
+  tags:
+    - web
+  artifacts:
+    paths:
+      - build/
+  before_script:
+    - unset CI
+    - echo "Creating .env"
+    - echo FIRST_ENVIRONMENT_VARIABLE=$FIRST_ENVIRONMENT_VARIABLE >> .env
+    - echo SECOND_ENVIRONMENT_VARIABLE=$SECOND_ENVIRONMENT_VARIABLE >> .env
+    - echo ".env created"
+  script:
+    - echo "Building app"
+    - yarn install
+    - yarn build
+    - echo "Build successful"
+
+.deploys:
+  stage: deploy
+  tags:
+    - web
+  only:
+    variables:
+      - $APP_PATH
+      - $DEPLOY_USER
+      - $SERVER_ADDRESS
+      - $SSH_PORT
+      - $SSH_PRIVATE_KEY
+  before_script:
+    - echo "Initializing SSH"
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+    - eval $(ssh-agent -s)
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - echo "SSH initialized"
+  script:
+    - echo "Deploying"
+    - export SSH_CONNECT="ssh -p $SSH_PORT $DEPLOY_USER@$SERVER_ADDRESS"
+    - export SCP_CONNECT="scp -P $SSH_PORT"
+    - export RELEASE_DIR=$(date --utc +"%Y%m%d%H%M%S")
+    - export RELEASES_PATH=$APP_PATH/releases
+    - export RELEASE_PATH=$RELEASES_PATH/$RELEASE_DIR
+    - export REMOTE_RELEASE_PATH=$DEPLOY_USER@$SERVER_ADDRESS:$RELEASE_PATH
+    - export TMP_CURRENT_PATH=$RELEASES_PATH/current
+    - $SSH_CONNECT mkdir -p $RELEASE_PATH
+    - $SCP_CONNECT -r build/* $REMOTE_RELEASE_PATH
+    - $SSH_CONNECT ln -sf $RELEASE_PATH $TMP_CURRENT_PATH
+    - $SSH_CONNECT mv $TMP_CURRENT_PATH $APP_PATH
+    - $SSH_CONNECT "find $RELEASES_PATH/* -maxdepth 0 -type d | sort -r | awk \"NR > ${KEEP_APPS_COUNT:-5}\" | xargs -r rm -r"
+    - echo "Deploy successful"
+
+build_test:
+  extends: .builds
+  only:
+    refs:
+      - develop
+  environment: test
+
+build_staging:
+  extends: .builds
+  only:
+    refs:
+      - staging
+  environment: staging
+
+build_production:
+  extends: .builds
+  only:
+    refs:
+      - master
+  environment: production
+
+deploy_staging:
+  extends: .deploys
+  only:
+    refs:
+      - staging
+  environment: staging
+  
+deploy_production:
+  extends: .deploys
+  only:
+    refs:
+      - master
+  environment: production

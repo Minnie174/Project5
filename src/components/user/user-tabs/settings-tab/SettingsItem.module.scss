@@ -1,0 +1,47 @@
+$border: 1px solid rgb(231, 231, 231);
+
+.SettingsItem {
+  margin-bottom: 30px;
+}
+
+.Title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.Table {
+
+}
+
+.TableItem {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  border: $border;
+
+  &:not(:last-child) {
+    border-bottom: 0;
+  }
+}
+
+.TableTitle {
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.TableDescr {
+  grid-column: 1;
+}
+
+.TableBtn {
+  cursor: pointer;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: start;
+  padding: 10px 0;
+  background-color: transparent;
+  font-size: 16px;
+  color: var(--settings-fc-color);
+  
+}

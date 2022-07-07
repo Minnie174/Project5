@@ -1,0 +1,335 @@
+.itemContainer {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 19px 0 110px;
+
+  h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 500;
+    margin: 0 0 8px;
+  }
+}
+
+.breadcrumbs {
+  font-size: 12px;
+
+  a {
+    text-decoration: none;
+    color: #9b9b9b;
+
+    &:hover {
+      color: #1d9bc9;
+    }
+  }
+}
+
+.item {
+  margin-top: 20px;
+
+  img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+  .flexContainer {
+    display: flex;
+
+    & > div:first-child {
+      width: 660px;
+      margin-right: 40px
+    }
+  }
+
+  h1 {
+    font-size: 24px;
+    line-height: 28px;
+    margin-bottom: 14px;
+    margin-top: 0px;
+
+    span {
+      margin-bottom: 14px;
+      margin-top: 0px;
+      font-size: 15px;
+      line-height: 25px;
+      font-weight: normal;
+    }
+  }
+
+  .price {
+    font-weight: bold;
+    line-height: 25px;
+    
+    div {
+      font-size: 22px;
+      margin: 2px 0 5px;
+    }
+
+    span {
+      font-size: 16px;
+      line-height: 25px;
+    }
+  }
+
+  .created {
+    color: rgb(155, 155, 155);
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 12px;
+  }
+
+  .photos {
+    position: relative;
+    width: 100%;
+    height: 495px;
+    border-radius: 3px;
+  
+    img {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      max-height: unset;
+    }
+  }
+
+  .buttons {
+    border-bottom: 1px solid rgb(216, 216, 216);
+    padding-bottom: 20px;
+    width: 260px;
+
+    button {
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 10px; 
+      border: 1px solid rgb(155, 155, 155);
+      background-color: rgb(255, 255, 255);
+      color: rgb(0, 0, 0);
+      font-size: 15px;
+      line-height: 40px;
+      text-align: center;
+      border-radius: 4px;
+
+      &.buyButton {
+        height: 40px;
+        margin-bottom: 2px;
+        font-weight: bold;
+        background-color: rgb(126, 211, 33);
+        border-color: rgb(126, 211, 33);
+        color: rgb(255, 255, 255);
+      }
+    }
+
+    .secureDeal {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      text-align: center;
+      font-size: 12px;
+      line-height: 20px;
+      margin-bottom: 5px;
+      color: rgb(155, 155, 155);
+      text-decoration: none;
+
+      div:last-of-type {
+        padding-top: 3px;
+      }
+
+      .smallShield::before {
+        content: '';
+        display: inline-block;
+        margin-right: 5px;
+        vertical-align: middle;
+        width: 11px;
+        height: 14px;
+        background: url('../../assets/icons/card_small_shield.svg') no-repeat 50%;
+        background-size: 11px 14px;
+      }
+    }
+
+    .checkbox {
+      text-align: center;
+      position: relative;
+
+      label {
+        @extend button;
+        display: block;
+        box-sizing: border-box;
+        user-select: none;
+      }
+
+      input {
+        position: absolute;
+        appearance: none;
+      }
+
+      .checkboxCustom {
+        position: absolute;
+        left: 5px;
+        top: 5px;
+        width: 30px;
+        height: 30px;
+        background: url(../../assets/icons/detailLikeOff.svg) no-repeat 50%;
+      }
+
+      input:checked + .checkboxCustom {
+        background: url(../../assets/icons/detailLikeOn.svg) no-repeat 50%;
+      } 
+      
+      .checkboxDetails {
+        text-align: center;
+        margin: 3px 0 20px;
+        line-height: 15px;
+        font-size: 12px;
+        color: rgb(155, 155, 155);
+      }
+    }
+
+    .socials {
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 15px;
+        margin-right: 20px;
+        padding-top: 2px;
+      }
+
+      div {
+        cursor: pointer;
+        margin: 0 20px 1px 0;
+
+        &::before {
+          content: '';
+          display: block;
+          width: 30px;
+          height: 30px;
+        }
+
+        &:last-of-type {
+          margin: 0;
+        }
+      }
+
+      .iconVk::before {
+        background: url('../../assets/icons/social/vk.svg') no-repeat 50%;;
+        background-size: 24px 14px; 
+      }
+
+      .iconTwitter::before {
+        background: url('../../assets/icons/twitter-black.svg') no-repeat 50%;;
+      }
+    }
+  }
+}
+
+.content {
+  width: 660px;
+  margin-top: 40px;
+
+  .contentBlock {
+    padding: 48px 0;
+    border-bottom: 1px solid rgb(216, 216, 216);
+
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  .description {
+    margin: 0;
+    padding: 0;
+
+    li {
+      list-style-type: none;
+      font-size: 15px;
+      line-height: 25px;
+      padding: 22px 0px;
+      border-bottom: 1px solid rgb(216, 216, 216);
+
+      &:first-of-type {
+        padding-top: 0;
+      }
+
+      & > strong {
+        display: inline-block;
+        margin-bottom: 10px;
+        line-height: 18px;
+      }
+
+      .delivery {
+        display: flex;
+        gap: 5px;
+      }
+    }
+  }
+
+  .sellerHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .sellerName {
+    font-size: 16px;
+    line-height: 24px;
+      
+    a {
+      text-decoration: none;
+      color: rgb(0, 0, 0);
+    }
+  }
+
+  .sellerImg {
+    display: block;
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
+
+  .sellerStats {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      position: relative;
+      list-style-type: none;
+      margin-right: 24px;
+      padding: 0;
+      font-size: 16px;
+      line-height: 24px;
+
+      h2 {
+        font-weight: normal;
+        margin: 0;
+      }
+
+      .phoneStat {
+        margin-top: 32px;
+
+        &::before {
+          content: "";
+          display: inline-block;
+          vertical-align: middle;
+          position: absolute;
+          top: -7px;
+          width: 32px;
+          height: 32px;
+          background: url('../../assets/icons/mobile_phone.svg') no-repeat 50%;
+          background-size: 32px 32px;
+        }
+      }
+    }
+  }
+}
+
+.recommended {
+  border-top: 1px solid #d8d8d8;
+  padding: 45px 0 40px;
+
+  h2 {
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+}

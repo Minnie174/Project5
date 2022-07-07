@@ -1,0 +1,48 @@
+$border: 1px solid rgb(231, 231, 231);
+
+.UserNav {
+  display: flex;
+  align-items: center;
+  border-bottom: $border;
+  margin-bottom: 50px;
+
+  li {
+    
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+  }
+
+  a {
+    display: block;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    
+    font-weight: 500;
+    color: var(--secondary-fc-color);
+    text-decoration: none;
+  }
+
+}
+
+.Title {
+  
+  margin-bottom: 50px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.Link {
+  display: inline-block;
+  padding: 1em 2em;
+  text-decoration: none;
+  color: #fff;
+  background-color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  transition: opacity 0.2s ease-in-out 0s;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

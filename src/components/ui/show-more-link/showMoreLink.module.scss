@@ -1,0 +1,17 @@
+.showMoreLink {
+  display: flex;
+  align-items: center;
+  color: var(--secondary-fc-color);
+  font-size: 16px;
+  transition: color 0.3s ease-in-out 0s;
+  text-decoration: none;
+
+  svg {
+    margin-left: 10px;
+    margin-bottom: 3px;
+  }
+
+  &:hover {
+    color: var(--main-fc-color);
+  }
+}

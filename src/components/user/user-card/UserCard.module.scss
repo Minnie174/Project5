@@ -1,0 +1,63 @@
+$userBorder: 1px solid rgb(221, 221, 221);
+
+.UserCard {
+  padding: 20px 20px 25px;
+  border: $userBorder;
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.1);
+}
+
+.UserCardTop {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: $userBorder;
+}
+
+.UserCardInfo {
+  margin-right: 20px;
+}
+
+.UserCardName {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.UserCardRegDate {
+  color: var(--secondary-fc-color);
+  margin-bottom: 10px;
+}
+
+.UserCardUpload {
+  color: var(--settings-fc-color);
+
+  label {
+    cursor: pointer;
+  }
+}
+
+
+
+.UserCardBottom {
+  padding-top: 20px;
+}
+
+.Confirmed {
+  
+}
+
+.ConfirmedTitle {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.ConfirmedDescr {
+  display: flex;
+  align-items: center;
+}
+
+.ConfirmedStatus {
+  margin-right: 10px;
+  flex-shrink: 0;
+  color: green;
+}
